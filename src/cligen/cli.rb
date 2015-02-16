@@ -14,10 +14,10 @@ module Cligen
         # Returns a new instance of OptionParser.
         def setup
             OptionParser.new do |options|
-                options.banner = "Usage: cligen generate [options]"
+                banner = "Usage: cligen generate [options]"
 
                 options.on("-h", "--help", "Prints help message") do
-                    puts options
+                    puts banner
                     exit
                 end
 
