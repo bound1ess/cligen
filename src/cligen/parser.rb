@@ -8,6 +8,7 @@ module Cligen
 
             @src = File.read(file)
             @sections = nil
+            @blocks = nil
         end
 
         # Returns all sections (as a Hash) described in the file.
@@ -29,6 +30,20 @@ module Cligen
             end
 
             @sections = sections
+        end
+
+        # Returns all text blocks described in the file (both "plaintext" and "code" blocks).
+        # An example of output: [{"type" => "code", "value" => "some code", "lang" => "php"}]
+        def get_text_blocks
+            if not @blocks.nil?
+                return @blocks
+            end
+
+            blocks = Array.new
+
+            # @todo
+
+            @blocks = blocks
         end
     end
 end

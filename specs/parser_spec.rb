@@ -19,4 +19,25 @@ RSpec.describe(Cligen::Parser) do
         # Repeated on purpose.
         expect(@parser.get_sections).to eq(sections)
     end
+
+    it("returns all text blocks as an array of hashes") do
+        blocks = [
+            {
+                "type" => "plaintext",
+                "value" => "Foobar is the very baz of 123321, false."
+            },
+            {
+                "type" => "code",
+                "lang" => "php",
+                "value" => "function fac($n) { return ($n <= 1) ? 1 : fac($n - 1); }"
+            },
+            {
+                "type" => "plaintext",
+                "value" => "Whatever it <strong>may be</strong>."
+            }
+        ]
+
+        expect(@parser.get_text_blocks).to eq(blocks)
+        expect(@parser.get_text_blocks).to eq(blocks) # On purpose.
+    end
 end
