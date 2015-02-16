@@ -22,7 +22,24 @@ module Cligen
         # Expects configuration (as a Hash object) to be passed.
         # Returns Hash as well.
         def transform(config)
-            config
+            new_config = {
+                "main" => {}
+            }
+
+            config["main"].each do |key, value|
+                if not value.start_with?("@")
+                    new_config["main"][key] = value
+                    next
+                end
+
+                new_config["main"][key] = config[value[1..-1]]
+
+                new_config["main"][key].each do |sub_key, value|
+                    new_config["main"][key][sub_key] = File.join(Dir.getwd, value)
+                end
+            end
+
+            new_config
         end
     end
 end

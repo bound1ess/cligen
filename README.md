@@ -15,12 +15,11 @@ All configuration is done via a single YAML file.
 
 ```yaml
 main:
-    links:
-        github: https://github.com/bound1ess/essence
-        packagist: https://packagist.org/packages/bound1ess/essence
-        documentation: #docs
+    github: "https://github.com/bound1ess/essence"
+    packagist: "https://packagist.org/packages/bound1ess/essence"
+    documentation: "@docs"
 
 docs:
-    from: ./docs.cligen
-    to: ./docs.html
+    from: "docs.cligen"
+    to: "docs.html"
 ```
