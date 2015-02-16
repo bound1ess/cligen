@@ -1,0 +1,13 @@
+// =section:Introduction
+// =text
+Foobar is the very baz of 123321, false.
+
+// =code:php
+function fac($n) {
+    return ($n <= 1) ? 1 : fac($n - 1);
+}
+
+// =section:"Getting started"
+
+// =text
+Whatever it <strong>may be</strong>.
