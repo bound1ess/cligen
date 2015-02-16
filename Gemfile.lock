@@ -1,7 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    daemons (1.1.9)
     diff-lcs (1.2.5)
+    docile (1.1.5)
+    eventmachine (1.0.3)
+    multi_json (1.10.1)
+    rack (1.6.0)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -15,9 +20,20 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.1)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rspec
+  simplecov
+  thin
