@@ -12,7 +12,7 @@ module Cligen
             end
 
             if not File.exist?(path)
-                nil
+                return nil
             end
 
             YAML.load(File.read(path))
