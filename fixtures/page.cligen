@@ -7,7 +7,7 @@ function fac($n) {
     return ($n <= 1) ? 1 : fac($n - 1);
 }
 
-// =section:"Getting started"
+// =section:"Getting #started"
 
 // =text
 Whatever it <strong>may be</strong>.
