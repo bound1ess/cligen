@@ -9,6 +9,7 @@ module Cligen
         def initialize
             @config = Dir.getwd
         end
+
         # This method initializes and configures OptionParser.
         # Returns a new instance of OptionParser.
         def setup
@@ -23,6 +24,21 @@ module Cligen
                 options.on("-c=PATH", "--config=PATH", "Config file to use") do |config|
                     @config = config
                 end
+            end
+        end
+
+        # Executes given OptionParser instance.
+        # Returns nothing (void), may exit.
+        def execute!(parser)
+            if ARGV.empty?
+                ARGV.push("--help")
+            end
+
+            begin
+                parser.parse!(ARGV)
+            rescue OptionParser::ParseError
+                puts $!.to_s
+                exit
             end
         end
     end
