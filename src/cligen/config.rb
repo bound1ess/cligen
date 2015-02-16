@@ -26,6 +26,10 @@ module Cligen
                 "main" => {}
             }
 
+            if not config.has_key?("main")
+                return new_config
+            end
+
             config["main"].each do |key, value|
                 if not value.start_with?("@")
                     new_config["main"][key] = value

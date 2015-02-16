@@ -21,5 +21,9 @@ RSpec.describe(Cligen::Config) do
                 }
             }
         })
+
+        expect(config.transform({})).to eq({
+            "main" => {}
+        })
     end
 end
