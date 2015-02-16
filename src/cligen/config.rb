@@ -17,5 +17,12 @@ module Cligen
 
             YAML.load(File.read(path))
         end
+
+        # Transforms configuration to a format that's easy to work with inside of the app.
+        # Expects configuration (as a Hash object) to be passed.
+        # Returns Hash as well.
+        def transform(config)
+            config
+        end
     end
 end
