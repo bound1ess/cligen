@@ -15,14 +15,17 @@ RSpec.describe(Cligen::Cli) do
         orig_stdout = $stdout
         $stdout = FakeStdout.new
 
-        begin
-            cli.execute!(cli.setup, argv)
-        rescue SystemExit # => error
-            # puts error.to_s
-        end
+        cli.execute!(cli.setup, argv)
 
         argv.push("--config=foo")
         cli.execute!(cli.setup, argv)
+
+        begin
+            argv.push("--help")
+            cli.execute!(cli.setup, argv)
+        rescue SystemExit
+            # ...
+        end
 
         begin
             argv.push("--invalid-option")
