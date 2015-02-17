@@ -1,4 +1,6 @@
 module Cligen
+    require "erb"
+
     # This class is responsible for generating HTML pages using ERB templates.
     class Generator
         # Generates a page.
