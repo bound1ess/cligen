@@ -36,6 +36,22 @@
             <div>
                 <% for @block in @data["blocks"] %>
                     <!-- <%= @block["type"] %> -->
+
+                    <% if "plaintext" == @block["type"] %>
+                        <p class="lead"><%= @block["value"] %></p>
+                    <% end %>
+
+                    <% if "code" == @block["type"] %>
+                        <pre><code class="<%= @block["lang"] %>"><%= @block["value"] %></code></pre>
+                    <% end %>
+
+                    <% if "section" == @block["type"] %>
+                        <h2>
+                            <a name="<%= @data["sections"][@block["value"]][1..-1] %>">
+                                <%= @block["value"] %>
+                            </a>
+                        </h2>
+                    <% end %>
                 <% end %>
             </div>
         </div>
