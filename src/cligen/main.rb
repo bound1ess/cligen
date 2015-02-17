@@ -12,7 +12,8 @@ module Cligen
             @config    = Cligen::Config.new
             @generator = Cligen::Generator.new
 
-            @template = File.dirname(__FILE__) + "/../../templates/page.erb"
+            @page_template = File.dirname(__FILE__) + "/../../templates/page.erb"
+            @main_template = File.dirname(__FILE__) + "/../../templates/main.erb"
         end
 
         # Runs Cligen with given ARGV value.
@@ -59,8 +60,29 @@ module Cligen
                     "blocks"   => config["from"].get_text_blocks
                 }
 
-                File.write(config["to"], @generator.generate_page(@template, data))
+                File.write(config["to"], @generator.generate_page(@page_template, data))
             end
+
+            # Generate and save main.html.
+            puts "Generating main page..."
+
+            pages.map! do |page|
+                pages_config[page]["to"].split("/").last
+            end
+
+            main_title = Dir.getwd.split("/").last
+
+            data = {
+                "title" => main_title,
+                "pages" => pages
+            }
+
+            File.write(
+                File.join(Dir.getwd, "builds/main.html"),
+                @generator.generate_page(@main_template, data)
+            )
+
+            puts "Done."
         end
     end
 end
