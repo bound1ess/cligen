@@ -23,6 +23,10 @@ RSpec.describe(Cligen::Parser) do
     it("returns all text blocks as an array of hashes") do
         blocks = [
             {
+                "type" => "section",
+                "value" => "Introduction"
+            },
+            {
                 "type" => "plaintext",
                 "value" => "Foobar is the very baz of 123321, false."
             },
@@ -30,6 +34,10 @@ RSpec.describe(Cligen::Parser) do
                 "type" => "code",
                 "lang" => "php",
                 "value" => "function fac($n) { return ($n <= 1) ? 1 : fac($n - 1); }"
+            },
+            {
+                "type" => "section",
+                "value" => "Getting #started"
             },
             {
                 "type" => "plaintext",
