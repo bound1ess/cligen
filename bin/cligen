@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require_relative "../src/cligen/main"
+Cligen::Main.new.run(ARGV)
+
+# vim: syntax=ruby
