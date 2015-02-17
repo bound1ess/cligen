@@ -14,10 +14,10 @@ module Cligen
         # Returns a new instance of OptionParser.
         def setup
             OptionParser.new do |options|
-                banner = "Usage: cligen generate [options]"
+                options.banner = "Usage: cligen generate [options]"
 
                 options.on("-h", "--help", "Prints help message") do
-                    puts banner
+                    puts options
                     exit
                 end
 
@@ -27,15 +27,15 @@ module Cligen
             end
         end
 
-        # Executes given OptionParser instance.
+        # Executes given OptionParser instance with given ARGV value.
         # Returns nothing (void), may exit.
-        def execute!(parser)
-            if ARGV.empty?
-                ARGV.push("--help")
+        def execute!(parser, argv)
+            if argv.empty?
+                argv.push("--help")
             end
 
             begin
-                parser.parse!(ARGV)
+                parser.parse!(argv)
             rescue OptionParser::ParseError
                 puts $!.to_s
                 exit

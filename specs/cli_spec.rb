@@ -9,31 +9,24 @@ RSpec.describe(Cligen::Cli) do
 
     it("executes OptionParser instance") do
         cli = Cligen::Cli.new
-
-        # Reset the arguments list.
-        level = $VERBOSE
-        $VERBOSE = nil
-
-        ARGV = Array.new
-
-        $VERBOSE = level
+        argv = Array.new
 
         # "Fake" stdout.
         orig_stdout = $stdout
         $stdout = FakeStdout.new
 
         begin
-            cli.execute!(cli.setup)
+            cli.execute!(cli.setup, argv)
         rescue SystemExit # => error
             # puts error.to_s
         end
 
-        ARGV.push("--config=foo")
-        cli.execute!(cli.setup)
+        argv.push("--config=foo")
+        cli.execute!(cli.setup, argv)
 
         begin
-            ARGV.push("--invalid-option")
-            cli.execute!(cli.setup)
+            argv.push("--invalid-option")
+            cli.execute!(cli.setup, argv)
         rescue SystemExit
             # ...
         end
