@@ -5,17 +5,38 @@
         <title><%= @data["title"] %></title>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+        <style>
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            ul {
+                font-size: 150%;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
+            <!-- Navigation. -->
+            <h1><a href="main.html">Back</a> / <%= @data["title"].capitalize %></h1>
+
             <!-- Sections. -->
             <div>
-
+                <ul>
+                    <% for @name in @data["sections"].keys %>
+                        <li><a href="<% @data["sections"][@name] %>">
+                            <% @name.capitalize %>
+                        </a></li>
+                    <% end %>
+                </ul>
             </div>
 
             <!-- Content. -->
             <div>
-
+                <% for @block in @data["blocks"] %>
+                    <!-- <%= @block["type"] %> -->
+                <% end %>
             </div>
         </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
