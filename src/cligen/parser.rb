@@ -48,23 +48,43 @@ module Cligen
                     next
                 end
 
-                if not line.match(/^\/\/\s=section:(.+)$/).nil?
-                    # That's a section.
-                    next
-                end
-
-                if not line.match(/^\/\/\s=code:(\w+)$/).nil?
-                    # That's a code snippet.
-                    next
-                end
-
-                if not line.match(/^\/\/\s=text$/).nil?
-                    # That's a plain text.
-                    next
+                if not (block = try_to_match(line)).nil?
+                    blocks.push(block)
                 end
             end
 
             @blocks = blocks
+        end
+
+        # Attempts to convert given string into a code/plaintext/section block.
+        # On success returns a block (Hash), otherwise nil.
+        def try_to_match(line)
+            if not (match = line.match(/^\/\/\s=section:(.+)$/)).nil?
+                # That's a section.
+                return {
+                    "type" => "section",
+                    "value" => match.captures.first.gsub(/\"/, "")
+                }
+            end
+
+            if not (match = line.match(/^\/\/\s=code:(\w+)$/)).nil?
+                # That's a code snippet.
+                return {
+                    "type" => "code",
+                    "lang" => match.captures.first,
+                    "value" => ""
+                }
+            end
+
+            if not (match = line.match(/^\/\/\s=text$/)).nil?
+                # That's a plain text.
+                return {
+                    "type" => "plaintext",
+                    "value" => ""
+                }
+            end
+
+            nil
         end
     end
 end
