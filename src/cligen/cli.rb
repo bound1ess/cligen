@@ -7,7 +7,7 @@ module Cligen
         attr_reader :config
 
         def initialize
-            @config = Dir.getwd
+            @config = Dir.getwd + "/cligen.yml"
         end
 
         # This method initializes and configures OptionParser.
@@ -22,6 +22,10 @@ module Cligen
                 end
 
                 options.on("-c=PATH", "--config=PATH", "Config file to use") do |config|
+                    if not config.start_with?("/")
+                        config = File.join(@config, config)
+                    end
+
                     @config = config
                 end
             end
@@ -30,15 +34,13 @@ module Cligen
         # Executes given OptionParser instance with given ARGV value.
         # Returns nothing (void), may exit.
         def execute!(parser, argv)
-            if argv.empty?
-                argv.push("--help")
-            end
-
-            begin
-                parser.parse!(argv)
-            rescue OptionParser::ParseError
-                puts $!.to_s
-                exit
+            if not argv.empty?
+                begin
+                    parser.parse!(argv)
+                rescue OptionParser::ParseError
+                    puts $!.to_s
+                    exit
+                end
             end
         end
     end
