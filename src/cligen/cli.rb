@@ -23,7 +23,7 @@ module Cligen
 
                 options.on("-c=PATH", "--config=PATH", "Config file to use") do |config|
                     if not config.start_with?("/")
-                        config = File.join(@config, config)
+                        config = File.join(Dir.getwd, config)
                     end
 
                     @config = config

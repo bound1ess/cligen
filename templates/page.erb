@@ -24,9 +24,9 @@
             <!-- Sections. -->
             <div>
                 <ul>
-                    <% for @name in @data["sections"].keys %>
-                        <li><a href="<% @data["sections"][@name] %>">
-                            <% @name.capitalize %>
+                    <% @data["sections"].each do |name, hashtag| %>
+                        <li><a href="<%= hashtag %>">
+                            <%= name.capitalize %>
                         </a></li>
                     <% end %>
                 </ul>

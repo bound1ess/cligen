@@ -5,3 +5,7 @@ end
 task :server do
     sh "thin start --port 8000 --address 127.0.0.1 --adapter file"
 end
+
+task "builds-dir" do
+    sh "mkdir builds/"
+end

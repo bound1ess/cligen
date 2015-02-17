@@ -4,5 +4,5 @@ main:
     documentation: "@docs"
 
 docs:
-    from: "docs.cligen"
-    to: "docs.html"
+    from: "fixtures/page.cligen"
+    to: "builds/docs.html"
