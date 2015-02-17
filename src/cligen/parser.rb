@@ -41,7 +41,28 @@ module Cligen
 
             blocks = Array.new
 
-            # @todo
+            @src.lines.each_with_index do |line, pos|
+                line.delete!($/)
+
+                if line.empty?
+                    next
+                end
+
+                if not line.match(/^\/\/\s=section:(.+)$/).nil?
+                    # That's a section.
+                    next
+                end
+
+                if not line.match(/^\/\/\s=code:(\w+)$/).nil?
+                    # That's a code snippet.
+                    next
+                end
+
+                if not line.match(/^\/\/\s=text$/).nil?
+                    # That's a plain text.
+                    next
+                end
+            end
 
             @blocks = blocks
         end
