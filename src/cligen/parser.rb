@@ -41,14 +41,26 @@ module Cligen
 
             blocks = Array.new
 
-            @src.lines.each_with_index do |line, pos|
-                line.delete!($/)
+            lines = @src.lines.map do |line|
+                line.delete($/)
+            end
 
-                if line.empty?
-                    next
-                end
+            lines.select! do |line|
+                not line.empty?
+            end
 
+            lines.each_with_index do |line, pos|
                 if not (block = try_to_match(line)).nil?
+                    if block["value"].empty?
+                        lines[(pos + 1)..-1].each do |line|
+                            if try_to_match(line).nil?
+                                block["value"] += line
+                            else
+                                break
+                            end
+                        end
+                    end
+
                     blocks.push(block)
                 end
             end
