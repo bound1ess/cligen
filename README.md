@@ -2,24 +2,57 @@
 
 Deadly simple CLI pages generator (experiment).
 
-## 3rd party
+## Example
 
-Thanks to:
-- [Highlight.js](https://highlightjs.org/)
-- [Bootstrap](https://github.com/twbs/bootstrap)
-- [cdnjs](https://cdnjs.com/)
+Check out `example` directory.
 
-## Configuration
+### Cligen format
 
-All configuration is done via a single YAML file.
+```
+// =text
+Welcome to the documentation page!
+I hope you will find it useful.
+Use the menu above to navigate through the text.
+
+// =section:"Installation"
+// =text
+The installation process is really simple:
+
+// =code:bash
+composer require --dev bound1ess/essence
+
+// =text
+Congrats, you're all set to go!
+
+// =section:"Usage"
+// =text
+The simplest example:
+
+// =code:php
+expect("foobar")->to_have_length_of(6)->validate();
+
+// =text
+Thanks for your attention!
+```
+
+### YAML configuration
 
 ```yaml
 main:
-    github: "https://github.com/bound1ess/essence"
     packagist: "https://packagist.org/packages/bound1ess/essence"
-    documentation: "@docs"
+    github: "https://github.com/bound1ess/essence"
+    docs: "@docs"
 
 docs:
     from: "docs.cligen"
     to: "docs.html"
+```
+
+## Rake
+
+```shell
+rake # => rake test
+rake test server
+rake build install-gem
+rake install builds-dir
 ```
