@@ -22,8 +22,14 @@
 
             <p class="lead">Put something here.</p>
             <div>
-                <% for @page in @data["pages"] %>
-                    <a href="<%= @page %>"><%= @page.delete(".html").capitalize %></a>
+                <% @data["pages"].each do |key, value| %>
+                    <div>
+                    <% if value.include?(".html") %>
+                        <a href="<%= value %>"><%= key.capitalize %></a>
+                    <% else %>
+                        <a href="<%= value %>"><%= key.capitalize %></a>
+                    <% end %>
+                    </div>
                 <% end %>
             </div>
         </div>

@@ -19,7 +19,7 @@ module Cligen
         # Runs Cligen with given ARGV value.
         def run(argv)
             # Find out path to the config file.
-            @cli.execute!(@cli.setup, ARGV)
+            @cli.execute!(@cli.setup, argv)
             config = @cli.config
 
             puts "Using #{config} configuration file..."
@@ -66,14 +66,19 @@ module Cligen
             # Generate and save main.html.
             puts "Generating main page..."
 
-            pages.map! do |page|
-                pages_config[page]["to"].split("/").last
+            pages = Hash.new
+
+            config["main"].each do |key, value|
+                if value.is_a?(String)
+                    pages[key] = value
+                    next
+                end
+
+                pages[key] = value["to"].split("/").last
             end
 
-            main_title = Dir.getwd.split("/").last
-
             data = {
-                "title" => main_title,
+                "title" => Dir.getwd.split("/").last,
                 "pages" => pages
             }
 
