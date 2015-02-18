@@ -7,7 +7,7 @@ Use the menu above to navigate through the text.
 // =text
 The installation process is really simple:
 
-// =code:"bash"
+// =code:bash
 composer require --dev bound1ess/essence
 
 // =text
@@ -17,7 +17,7 @@ Congrats, you're all set to go!
 // =text
 The simplest example:
 
-// =code:"php"
+// =code:php
 expect("foobar")->to_have_length_of(6)->validate();
 
 // =text

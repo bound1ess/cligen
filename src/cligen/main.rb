@@ -33,7 +33,7 @@ module Cligen
             # Transform it.
             config = @config.transform(config)
 
-            print "The following pages are about to be built: "
+            print "The following pages are about to be built: index, "
 
             pages = Array.new
             config["main"].map do |key, value|
@@ -78,7 +78,7 @@ module Cligen
             }
 
             File.write(
-                File.join(Dir.getwd.end_with?("cligen") ? "builds" : Dir.getwd, "main.html"),
+                File.join(Dir.getwd.end_with?("cligen") ? "builds" : Dir.getwd, "index.html"),
                 @generator.generate_page(@main_template, data)
             )
 

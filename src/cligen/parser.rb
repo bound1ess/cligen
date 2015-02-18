@@ -54,7 +54,7 @@ module Cligen
                     if block["value"].empty?
                         lines[(pos + 1)..-1].each do |line|
                             if try_to_match(line).nil?
-                                block["value"] += line
+                                block["value"] += line + "<br>"
                             else
                                 break
                             end
