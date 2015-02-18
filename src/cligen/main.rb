@@ -78,7 +78,7 @@ module Cligen
             }
 
             File.write(
-                File.join(Dir.getwd, "builds/main.html"),
+                File.join(Dir.getwd.include?("cligen") ? "builds" : Dir.getwd, "main.html"),
                 @generator.generate_page(@main_template, data)
             )
 
