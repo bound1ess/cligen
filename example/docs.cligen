@@ -1,0 +1,24 @@
+// =text
+Welcome to the documentation page!
+I hope you will find it useful.
+Use the menu above to navigate through the text.
+
+// =section:"Installation"
+// =text
+The installation process is really simple:
+
+// =code:"bash"
+composer require --dev bound1ess/essence
+
+// =text
+Congrats, you're all set to go!
+
+// =section:"Usage"
+// =text
+The simplest example:
+
+// =code:"php"
+expect("foobar")->to_have_length_of(6)->validate();
+
+// =text
+Thanks for your attention!

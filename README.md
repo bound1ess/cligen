@@ -1,6 +1,6 @@
 # Cligen
 
-CLI site generator optimized for Github.io and PHP projects.
+Deadly simple CLI pages generator (experiment).
 
 ## 3rd party
 

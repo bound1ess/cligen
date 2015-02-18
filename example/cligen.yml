@@ -1,0 +1,8 @@
+main:
+    packagist: "https://packagist.org/packages/bound1ess/essence"
+    github: "https://github.com/bound1ess/essence"
+    docs: "@docs"
+
+docs:
+    from: "docs.cligen"
+    to: "docs.html"
