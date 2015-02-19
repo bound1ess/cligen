@@ -23,13 +23,12 @@
             <p class="lead">Put something here.</p>
             <div>
                 <% @data["pages"].each do |key, value| %>
-                    <div>
-                    <% if value.include?(".html") %>
-                        <a href="<%= value %>"><%= key.capitalize %></a>
-                    <% else %>
-                        <a href="<%= value %>"><%= key.capitalize %></a>
-                    <% end %>
-                    </div>
+                    <a
+                        href="<%= value %>"
+                        class="btn btn-lg btn-<%= @data["button_styles"].sample %>"
+                    >
+                        <%= key.capitalize %>
+                    </a>
                 <% end %>
             </div>
         </div>

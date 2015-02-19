@@ -79,7 +79,8 @@ module Cligen
 
             data = {
                 "title" => Dir.getwd.split("/").last,
-                "pages" => pages
+                "pages" => pages,
+                "button_styles" => ["default", "primary", "danger", "warning", "success"]
             }
 
             File.write(

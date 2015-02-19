@@ -6,6 +6,12 @@ Deadly simple CLI pages generator (experiment).
 
 Check out `example` directory.
 
+## Screenshots
+
+![](http://i.imgur.com/VPArKjZ.png)
+
+![](http://i.imgur.com/yciuKsG.png)
+
 ### Cligen format
 
 ```
